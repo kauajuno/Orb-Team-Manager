@@ -3,17 +3,14 @@ import './InputField.css'
 
 export const InputField = (props) => {
 
-    let [val, setVal] = useState('');
-
     const onTyping = (e) => {
-        setVal(e.target.value);
-        console.log(val)
+        props.setVal(e.target.value);
     }
 
     return(
         <div className="input-field">
             <label>{props.label}</label>
-            <input value={val} onChange={onTyping} required={props.mandatory} placeholder={props.placeholder}/>
+            <input value={props.val} onChange={onTyping} required={props.mandatory} placeholder={props.placeholder}/>
         </div>
     )
 }

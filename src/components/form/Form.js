@@ -2,23 +2,52 @@ import './Form.css';
 import InputField from '../input_field';
 import Dropdown from '../dropdown';
 import SubmitButton from '../submit_button';
+import { useState } from 'react';
 
-export const Form = () => {
-    const times = ['DevOps', 'Front-end', 'Back-end', 'Data Science', 'UX e Design', 'Inovação'];
+export const Form = (props) => {
+    const teams = ['Front-end', 'Back-end', 'UX & Design', 'DevOps', 'Proccess Management'];
+
+    const [name, setName] = useState('KJ');
+    const [position, setPosition] = useState('FE');
+    const [image, setImage] = useState('');
+    const [team, setTeam] = useState('');
 
     const onSave = (event) => {
         event.preventDefault();
-        console.log('Submissão realizada com sucesso');
+        props.onRegister({
+            name,
+            position,
+            image,
+            team
+        });
     }
 
     return (
         <section className='form'>
             <form onSubmit={onSave}>
                 <h2>Preencha os dados do novo integrante</h2>
-                <InputField mandatory={true} label="Nome" placeholder="Digite seu nome" />
-                <InputField mandatory={true} label="Cargo" placeholder="Informe seu cargo" />
-                <InputField mandatory={false} label="Imagem" placeholder="Informe o endereço da imagem" />
-                <Dropdown mandatory={true} label="Time" itens={times}/>
+                <InputField
+                    val={name}
+                    setVal={name => setName(name)}
+                    mandatory={true}
+                    label="Name"
+                    placeholder="Insert your name"
+                />
+                <InputField
+                    val={position}
+                    setVal={position => setPosition(position)}
+                    mandatory={true}
+                    label="Graduation"
+                    placeholder="What degree do you hold?"
+                />
+                <InputField
+                    val={image}
+                    setVal={image => setImage(image)}
+                    mandatory={false}
+                    label="Image"
+                    placeholder="Insert the image URL"
+                />
+                <Dropdown val={team} setVal={team => setTeam(team)} mandatory={true} label="Team" itens={teams} />
                 <SubmitButton>Criar Card</SubmitButton>
             </form>
         </section>
