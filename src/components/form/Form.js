@@ -5,10 +5,16 @@ import SubmitButton from '../submit_button';
 import { useState } from 'react';
 
 export const Form = (props) => {
-    const teams = ['Front-end', 'Back-end', 'UX & Design', 'DevOps', 'Proccess Management'];
+    const teams = [
+        'Front-end',
+        'Back-end',
+        'DevOps',
+        'UX & Design',
+        'Proccess Management'
+    ];
 
-    const [name, setName] = useState('KJ');
-    const [position, setPosition] = useState('FE');
+    const [name, setName] = useState('');
+    const [position, setPosition] = useState('');
     const [image, setImage] = useState('');
     const [team, setTeam] = useState('');
 
