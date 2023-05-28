@@ -5,13 +5,8 @@ import SubmitButton from '../submit_button';
 import { useState } from 'react';
 
 export const Form = (props) => {
-    const teams = [
-        'Front-end',
-        'Back-end',
-        'DevOps',
-        'UX & Design',
-        'Proccess Management'
-    ];
+    
+    const teamNames = props.teamNames;
 
     const [name, setName] = useState('');
     const [position, setPosition] = useState('');
@@ -26,12 +21,16 @@ export const Form = (props) => {
             image,
             team
         });
+        setName('');
+        setPosition('');
+        setImage('');
+        setTeam('');
     }
 
     return (
         <section className='form'>
             <form onSubmit={onSave}>
-                <h2>Preencha os dados do novo integrante</h2>
+                <h2>Fill with new member's data</h2>
                 <InputField
                     val={name}
                     setVal={name => setName(name)}
@@ -50,10 +49,10 @@ export const Form = (props) => {
                     val={image}
                     setVal={image => setImage(image)}
                     mandatory={false}
-                    label="Image"
+                    label="Image URL"
                     placeholder="Insert the image URL"
                 />
-                <Dropdown val={team} setVal={team => setTeam(team)} mandatory={true} label="Team" itens={teams} />
+                <Dropdown val={team} setVal={team => setTeam(team)} mandatory={true} label="Team" itens={teamNames} />
                 <SubmitButton>Criar Card</SubmitButton>
             </form>
         </section>

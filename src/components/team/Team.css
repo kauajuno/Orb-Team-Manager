@@ -1,12 +1,19 @@
 .team{
-    background-color: #ffb3e5;
     padding: 2rem;
     text-align: center;
 }
 
 .team h3{
     font-size: 2rem;
-    border-bottom: 4px solid #ff33ba;
+    border-bottom: 4px solid;
     display: inline-block;
     padding-bottom: 8px;
+}
+
+.team-members{
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }

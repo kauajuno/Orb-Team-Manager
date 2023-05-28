@@ -5,22 +5,55 @@ import Team from './components/team';
 
 function App() {
 
+  const teams = [
+    {
+      name: 'Front-end',
+      primaryColor: '#FF7A7A',
+      secondaryColor: '#FFD3D3'
+    },
+    {
+      name: 'Back-end',
+      primaryColor: '#FFF27A',
+      secondaryColor: '#FEFFD3'
+    },
+    {
+      name: 'DevOps',
+      primaryColor: '#BCFF67',
+      secondaryColor: '#DFFFB6'
+    },
+    {
+      name: 'UX & Design',
+      primaryColor: '#69FF81',
+      secondaryColor: '#B6FFC1'
+    },
+    {
+      name: 'Process Management',
+      primaryColor: '#9069FF',
+      secondaryColor: '#DFD3FF'
+    },
+    
+  ];
+
   const [members, setMembers] = useState([]);
 
   const onNewMemberRegister = (member) => {
     setMembers([...members, member]);
-    console.log(member);
+    // console.log(member);
   }
 
   return (
     <div className="App">
       <Banner/>
-      <Form onRegister={onNewMemberRegister}/>
-      <Team name="Front-end"/>
-      <Team name="Back-end"/>
-      <Team name="UX & Design"/>
-      <Team name="DevOps"/>
-      <Team name="Proccess Management"/>
+      <Form onRegister={onNewMemberRegister} teamNames={teams.map(team => team.name)}/>
+      {teams.map(
+        team =>
+          <Team
+            key={team.name}
+            name={team.name}
+            primaryColor={team.primaryColor}
+            secondaryColor={team.secondaryColor}
+            members={members.filter(member => member.team === team.name)}
+          />)}
     </div>
   );
 }
